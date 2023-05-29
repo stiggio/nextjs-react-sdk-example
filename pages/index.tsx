@@ -2,10 +2,7 @@ import type {NextPage} from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
-import dynamic from 'next/dynamic'
-
-// Stigg components do not support SSR, and must be dynamically loaded on the client side
-const PricingPlans = dynamic(() => import('../components/PricingPlans').then((mod) => mod.PricingPlans), {ssr: false});
+import {Paywall, Plan} from "@stigg/react-sdk";
 
 const Home: NextPage = () => {
   return (
@@ -21,9 +18,11 @@ const Home: NextPage = () => {
           Welcome to <a href="https://nextjs.org">Next.js!</a>
         </h1>
 
-        <p className={styles.description}>
-          <PricingPlans />
-        </p>
+        <div className={styles.pricingPlans}>
+          <Paywall onPlanSelected={({plan}: { plan: Plan }) => {
+            console.log(`Selected plan: ${plan.displayName}`);
+          }}/>
+        </div>
       </main>
 
       <footer className={styles.footer}>

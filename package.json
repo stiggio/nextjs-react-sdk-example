@@ -9,7 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@stigg/react-sdk": "0.16.0",
+    "@stigg/react-sdk": "latest",
     "next": "12.2.5",
     "next-remove-imports": "^1.0.7",
     "react": "18.2.0",
